@@ -1,0 +1,62 @@
+﻿@model List<test_website.Models.UserViewModels>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Fa.Staff</h2>
+<hr />
+
+<a href="@Url.Action("CreateStaff","Staff")">@Fa.CreateStaff</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Fa.LastName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>
+                    @(a.FirstName+' '+@a.LastName)
+                    <!-- Button trigger modal -->
+                    <button data-id="@a.id" style="float:left" type="button" data-name="@(a.FirstName + ' ' + a.LastName)" class="btn btn-primary delete-user">@Fa.Delete</button>
+                    <a href="@Url.Action("EditStaff", "Staff", new { id = a.id })" style="float:left">@Fa.Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("DeleteStaff", "Staff"))
+    {
+        <input type="hidden" name="id" id="user-id" />
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <span id="name"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">@Fa.No</button>
+                        <button type="submit" class="btn btn-primary">@Fa.Yes</button>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+
+@section scripts{
+<script type="text/javascript">
+        var deleteMsg = '@Fa.DeleteStaff';
+        $('.delete-user').click(function () {
+            $('#exampleModal').find('#name').text(deleteMsg.replace('{0}', $(this).data('name')));
+            $('#exampleModal').find('#user-id').val($(this).data('id'));
+            $('#exampleModal').modal('show');
+        });
+</script>    
+}
+
+

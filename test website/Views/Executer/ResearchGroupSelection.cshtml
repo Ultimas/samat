@@ -1,0 +1,12 @@
+﻿@model List<test_website.Models.ResearchGroupViewModel>
+   
+<div class="col-md-8">
+    <select class="form-control researchgroup-selection" name="ResearchGroupIds[0]">
+        @foreach (var a in Model)
+        {
+            <option value="@a.Id">@a.Name</option>
+        }
+    </select>
+</div>
+
+

@@ -1,0 +1,68 @@
+﻿@model List<test_website.Models.EducationalGroupViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Fa.EducationalGroupMgnt</h2>
+<hr />
+<a href="@Url.Action("CreateEducationalGroup", "EducationalGroup")">@Fa.CreateEducationalGroup</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Fa.EducationalGroupName</th>
+            <th>@Fa.CollegeName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>
+                    @a.EducationalGroupName          
+                 </td>
+                <td>
+                    @a.College
+                    <!-- Button trigger modal -->
+                    <button  data-id="@a.Id" style="float:left" type="button" data-college="@a.College" data-educationalgroup="@a.EducationalGroupName" class="btn btn-primary delete-edu">@Fa.Delete</button>
+                    <a href="@Url.Action("EditEducationalGroup","EducationalGroup",new { id = a.Id })" style="float:left">@Fa.Edit</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("DeleteEducationalGroup", "EducationalGroup"))
+    {
+        <input type="hidden" name="id" id="edu-id" />
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <span id="name"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">@Fa.No</button>
+                        <button type="submit" class="btn btn-primary">@Fa.Yes</button>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+
+@section scripts{
+    
+    <script type="text/javascript">
+        var deleteMsg = '@Fa.DeleteEducationalGroup';
+        $('.delete-edu').click(function () {
+            $('#exampleModal').find('#name').text(deleteMsg.replace('{0}', $(this).data('educationalgroup')).replace('{1}', $(this).data('college')));
+            $('#exampleModal').find('#edu-id').val($(this).data('id'));
+            $('#exampleModal').modal('show');
+        })
+
+    </script>
+    }
+
+

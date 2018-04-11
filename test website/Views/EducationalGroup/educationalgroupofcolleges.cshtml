@@ -1,0 +1,13 @@
+﻿@model List<test_website.Models.EducationalGroupModel>
+    @{ 
+        var selection = (int?)ViewData["selection"] ?? 0;
+    }
+<select class="form-control" name="EducationalGroupId">
+        @foreach (var a in Model)
+        {
+        <option value="@a.Id" @(a.Id == selection ? "selected" : "")> @a.Name</option>
+        }
+</select>
+
+
+

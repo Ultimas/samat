@@ -1,0 +1,69 @@
+﻿@model List<test_website.Models.ExecuterViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Fa.ExecuterMgnt</h2>
+<hr />
+
+<a href="@Url.Action("CreateExecuter","Executer")">@Fa.CreateExecuter</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Fa.LastName</th>
+            <th>@Fa.FirstName</th>
+            <th>@Fa.CollegeName</th>
+            <th>@Fa.EducationalGroupName</th>
+            <th>@Fa.MasterId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+            {
+            <tr>
+                <td>@a.LastName</td>
+                <td>@a.FirstName</td>
+                <td>@a.College</td>
+                <td>@a.EducationalGroup</td>
+                <td>
+                    @a.MasterId
+                    <!-- Button trigger modal -->
+                    <button data-id="@a.Id" style="float:left" type="button" data-name="@(a.FirstName+' '+a.LastName)" class="btn btn-primary delete-executer">@Fa.Delete</button>
+                    <a href="@Url.Action("EditExecuter","Executer",new { id = a.Id })" style="float:left">@Fa.Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("DeleteExecuter", "Executer"))
+    {
+        <input type="hidden" name="id" id="executer-id" />
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span id="name"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Fa.No</button>
+                    <button type="submit" class="btn btn-primary">@Fa.Yes</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var deleteMsg = '@Fa.DeleteExecuter';
+        $('.delete-executer').click(function () {
+            $('#exampleModal').find('#name').text(deleteMsg.replace('{0}', $(this).data('name')));
+            $('#exampleModal').find('#executer-id').val($(this).data('id'));
+            $('#exampleModal').modal('show');
+        })
+    </script>
+}

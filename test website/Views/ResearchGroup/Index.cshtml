@@ -1,0 +1,65 @@
+﻿@model List<test_website.Models.ResearchGroupViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Fa.ResearchGroupMgnt</h2>
+<hr />
+<a href="@Url.Action("CreateResearchGroup","ResearchGroup")">@Fa.CreateResearchGroup</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Fa.ResearchGroupName</th>
+            <th>@Fa.CollegeName</th>
+            <th>@Fa.EducationalGroupName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var a in Model)
+        {
+            <tr>
+                <td>@a.Name</td>
+                <td>@a.College</td>
+                <td>
+                    @a.EducationalGroup
+                <button data-id="@a.Id" style="float:left" type="button" data-researchgroup="@a.Name" class="btn btn-primary delete-res">@Fa.Delete</button>
+                <a href="@Url.Action("EditResearchGroup","ResearchGroup",new { id = a.Id })" style="float:left">@Fa.Edit</a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("DeleteResearchGroup", "ResearchGroup"))
+    {
+        <input type="hidden" name="id" id="res-id" />
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span id="name"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Fa.No</button>
+                    <button type="submit" class="btn btn-primary">@Fa.Yes</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        var deleteMsg = '@Fa.DeleteResearchGroup';
+        $('.delete-res').click(function () {
+            $('#exampleModal').find('#name').text(deleteMsg.replace('{0}', $(this).data('researchgroup')));
+            $('#exampleModal').find('#res-id').val($(this).data('id'));
+            $('#exampleModal').modal('show');
+        })
+
+    </script>
+}
