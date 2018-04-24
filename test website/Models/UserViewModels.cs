@@ -71,4 +71,53 @@ namespace test_website.Models
 
         public int Id { get; set; }
     }
+
+    public class ProjectViewModel
+    {
+        public int Id { get; set; }
+
+        public string ProjectId { get; set; }
+
+        public string Title { get; set; }
+
+        public string Employer { get; set; }
+
+        public string College { get; set; }
+
+        public string EducationalGroup { get; set; }
+
+        public string Executer { get; set; }
+
+        public string ResearchGroup { get; set; }
+
+        public long? Price { get; set; }
+
+        public long? OverHeadPrice { get; set; }
+
+        public long? ReceivePrice { get; set; }
+
+        public long? RemainPrice { get; set; }
+
+        public long? PaymentPrice { get; set; }
+
+        public string MainContractId { get; set; }
+
+        public string MainContractDate { get; set; }
+
+        public string InternalContractId { get; set; }
+
+        public string InternalContractDate { get; set; }
+
+        public string ProjectEndDate { get; set; }
+
+        public int? PhasesNum { get; set; }
+
+        public int ProjectStatus { get; set; }
+
+        public int ProjectType { get; set; }
+
+        public string Explain { get; set; }
+
+
+    }
 }
