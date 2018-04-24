@@ -1,0 +1,10 @@
+﻿@model List<test_website.Models.ExecuterModel>
+@{
+    var selection = (int?)ViewData["selection"] ?? 0;
+}
+<select class="form-control" name="ExecuterId">
+    @foreach (var a in Model)
+    {
+        <option value="@a.Id" @(a.Id == selection ? "selected" : "")> @(a.FirstName+" "+a.LastName)</option>
+    }
+</select>

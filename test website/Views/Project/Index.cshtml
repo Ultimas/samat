@@ -1,0 +1,35 @@
+﻿@model List<test_website.Models.ProjectViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Fa.CreateProject</h2>
+<hr />
+<a href="@Url.Action("CreateProject","Project")">@Fa.CreateProject</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Fa.Title</th>
+            <th>@Fa.EmployerName</th>
+            <th>@Fa.ProjectExecuter</th>
+            <th>@Fa.CollegeName</th>
+            <th>@Fa.EducationalGroupName</th>
+            <th>@Fa.Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+            {
+            <tr>
+                <td><a href="@Url.Action("ProjectInfo","Project",new { id = a.Id })">@a.Title</a></td>
+                <td><a href="">@a.Employer</a></td> 
+                <td><a href="">@a.Executer</a></td>
+                <td><a href="">@a.College</a></td>
+                <td><a href="">@a.EducationalGroup</a></td>
+                <td><a href="">@a.Price</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

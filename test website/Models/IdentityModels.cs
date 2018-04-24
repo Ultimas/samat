@@ -54,6 +54,10 @@ namespace test_website.Models
 
         public DbSet<ExecuterResearchGroupModel> ExecuterResearchGroups { get; set; }
 
+        public DbSet<ProjectModel> Projects { get; set; }
+
+        public DbSet<ProjectAttachmentsModel> ProjectAttachments { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ResearchGroupModel>()
@@ -86,7 +90,37 @@ namespace test_website.Models
                 .WithMany()
                 .HasForeignKey(t => t.ResearchGroupId)
                 .WillCascadeOnDelete(false);
-
+            modelBuilder.Entity<ProjectModel>()
+                .HasRequired(t => t.College)
+                .WithMany()
+                .HasForeignKey(t => t.CollegeId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProjectModel>()
+                .HasRequired(t => t.EducationalGroup)
+                .WithMany()
+                .HasForeignKey(t => t.EducationalGroupId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProjectModel>()
+                .HasRequired(t => t.Executer)
+                .WithMany()
+                .HasForeignKey(t => t.ExecuterId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProjectModel>()
+                .HasRequired(t => t.ResearchGroup)
+                .WithMany()
+                .HasForeignKey(t => t.ResearchGroupId)
+                .WillCascadeOnDelete(false);
+           modelBuilder.Entity<ProjectModel>()
+                .HasRequired(t => t.Employer)
+                .WithMany()
+                .HasForeignKey(t => t.EmployerId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProjectAttachmentsModel>()
+                .HasRequired(t => t.Project)
+                .WithMany()
+                .HasForeignKey(t => t.ProjectId)
+                .WillCascadeOnDelete(false);
+        
             base.OnModelCreating(modelBuilder);
         }
     }
