@@ -71,6 +71,7 @@ namespace test_website.Services
                 _db.ExecuterResearchGroups.RemoveRange(researchgroups);
                 _db.SaveChanges();
             }
+            
         }
 
         public ExecuterModel FindExecuter(int id)
@@ -81,11 +82,6 @@ namespace test_website.Services
         public List<ExecuterResearchGroupModel> FindExecuterResearchGroups(int id)
         {
             return _db.ExecuterResearchGroups.Where(t => t.ExeuterId == id).ToList();
-        }
-
-        public List<ExecuterModel> FindByCollegeId(int id)
-        {
-            return _db.Executers.Where(t=>t.CollegeId==id).ToList();
         }
 
         public void Dispose()

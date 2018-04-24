@@ -7,7 +7,6 @@ namespace test_website
 {
     public class Fa
     {
-        public static readonly string MainPage = "صفحه ی اصلی";
         public static readonly string LockedOut = "حساب کاربری شما بسته شده است";
         public static readonly string Failure = "نام کاربری یا کلمه عبور اشتباه وارد شده است";
         public static readonly string Error = "خطایی رخ داده است";
@@ -64,23 +63,6 @@ namespace test_website
         public static readonly string DeleteStaff = "آیا می خواهید {0} از لیست کارکنان حذف شود؟";
         public static readonly string EditStaff = "ویرایش کارکنان";
         public static readonly string ProjectMgnt = "مدیریت پروژه";
-        public static readonly string CreateProject = "افزودن پروژه";
-        public static readonly string ProjectExecuter = "مجری پروژه";
-        public static readonly string ProjectStatus = "وضعیت پروژه";
-        public static readonly string RequiredProjectStatuse = "وضعیت پروژه را وارد کنید";
-        public static readonly string Current = "جاری";
-        public static readonly string ScientificEnding = "خاتمه علمی";
-        public static readonly string FinalEnd = "خاتمه نهایی";
-        public static readonly string Stop = "متوقف";
-        public static readonly string Cancel = "فسخ";
-        public static readonly string AttachFile = "فایل ضمیمه";
-        public static readonly string ProjectType = "نوع پروژه";
-        public static readonly string RequiredProjectType = "نوع پروژه را وارد کنید";
-        public static readonly string OutOfCollege = "برون دانشگاهی";
-        public static readonly string ThesisSupport = "حمایت از پایان نامه";
-        public static readonly string Strategic = "راهبردی";
-        public static readonly string Others = "سایر";
-        public static readonly string DeleteProject = "آیا می خواهید پروژه ی {0} از لیست پروژه ها حذف شود؟";
         public const string RequiredUserName = "ورود نام کاربری الزامی است";
         public const string UserNameChar = "کاراکتر های مجاز نام کاربری شامل حروف انگلیسی و اعداد می باشد";
         public const string UserName = "نام کاربری";
@@ -107,7 +89,6 @@ namespace test_website
         public const string EmployerName = "نام کارفرما";
         public const string RequiredEmployerName = "نام کارفرما را وارد کنید";
         public const string EnterMasterId = "شماره مجری را وارد کنید";
-        public const string RequiredExecuterName = "نام مجری را وارد کنید";
         public const string MasterId = "شماره استادی";
         public const string Email = "ایمیل";
         public const string RequiredEmail = "ورود ایمیل الزامی است";
@@ -121,7 +102,6 @@ namespace test_website
         public const string RequiredProjectId = "شماره طرح را وارد کنید";
         public const string Price = "مبلغ طرح";
         public const string RequiredPrice = "مبلغ را وارد کنید";
-        public const string PriceChar = "مبلغ شامل عدد است";
         public const string OverHeadPrice = "مبلغ بالاسری را وارد کنید";
         public const string ReceivePrice = "مبلغ وصول شده";
         public const string RemainPrice = "مبلغ مانده";
@@ -132,10 +112,6 @@ namespace test_website
         public const string RequiredMainContractDate = "تاریخ قرارداد اصلی را وارد کنید";
         public const string InternalContractId = "شماره قرارداد داخلی";
         public const string RequiredInternalContractId = "شماره قرارداد داخلی را وارد کنید";
-        public const string InternalContractDate = "تاریخ قرارداد داخلی";
-        public const string RequiredInternalContractDate = "تاریخ قرارداد داخلی را وارد کنید";
-        public const string ProjectEndTime = "تاریخ پایان پروژه";
-        public const string PhaseNum = "تعداد فاز";
 
     }
 }

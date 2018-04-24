@@ -4,15 +4,16 @@
     ViewBag.Title = "CreateProject";
 }
 
-<h2>@Fa.CreateProject</h2>
-<hr />
+<h2>CreateProject</h2>
 
 
-@using (Html.BeginForm("CreateProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>CreateProjectBindingModel</h4>
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -31,98 +32,6 @@
         </div>
 
         <div class="form-group">
-            <div class="row">
-                <div class="col-md-2">
-                    <label>@Fa.EmployerName</label>
-                </div>
-                <div class="col-md-10">
-                    <select class="form-control" name="EmployerId">
-                        @foreach (var a in ViewBag.Employers)
-                        {
-                            <option value="@a.Id">@a.Name</option>
-                        }
-                    </select>
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("EmployerId"))
-                    {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredEmployerName</span></span>
-                    }
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-2">
-                    <label>@Fa.CollegeName</label>
-                </div>
-                <div class="col-md-10">
-                    <select class="form-control college-selection" name="CollegeId">
-                        @foreach (var a in ViewBag.College)
-                        {
-                            <option value="@a.Id">@a.Name</option>
-                        }
-                    </select>
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("CollegeId"))
-                    {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredCollegeName</span></span>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row" id="edu">
-                <div class="col-md-2">
-                    <label>@Fa.EducationalGroupName</label>
-                </div>
-                <div class="col-md-10">
-                    @Html.Partial("~/views/educationalgroup/educationalgroupofcolleges.cshtml", ViewBag.EducationalGroup as List<test_website.Models.EducationalGroupModel>)
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("EducationalGroupId"))
-                {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredEducationalGroupName</span></span>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row" id="exe">
-                <div class="col-md-2">
-                    <label>@Fa.ProjectExecuter</label>
-                </div>
-                <div class="col-md-10">
-                    @Html.Partial("~/views/executer/ExecuterOfCollege.cshtml", ViewBag.Executer as List<test_website.Models.ExecuterModel>)
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("ExecuterId"))
-                    {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredExecuterName</span></span>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-2">
-                    <label>@Fa.ResearchGroupName</label>
-                </div>
-                <div class="col-md-10">
-                    <select class="form-control" name="ResearchGroupId">
-                        @foreach (var a in ViewBag.ResearchGroup)
-                        {
-                            <option value="@a.Id">@a.Name</option>
-                        }
-                    </select>
-
-                       @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("ResearchGroupId"))
-                       {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredResearchGroupName</span></span>
-                       }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
@@ -131,18 +40,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OverHeadPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.OverHead, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OverHeadPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OverHeadPrice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.OverHead, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OverHead, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReceivePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RecivePrice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReceivePrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReceivePrice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.RecivePrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecivePrice, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -155,26 +64,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PaymentPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MyProperty, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PaymentPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PaymentPrice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.MyProperty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MyProperty, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MainContractId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ContractId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MainContractId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MainContractId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ContractId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MainContractDateStr, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ContractDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.MainContractDateStr,  new { @class = "form-control datepicker" })
-                @Html.ValidationMessageFor(model => model.MainContractDateStr, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ContractDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContractDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -187,134 +96,49 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InternalContractDateStr, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InternalContractDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.InternalContractDateStr, new { @class = "form-control datepicker" } )
-                @Html.ValidationMessageFor(model => model.InternalContractDateStr, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.InternalContractDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InternalContractDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProjectEndDateStr, htmlAttributes: new { @class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ProjectEndDateStr, new { @class = "form-control datepicker" })
-                @Html.ValidationMessageFor(model => model.ProjectEndDateStr, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhasesNum, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Phases, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PhasesNum, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhasesNum, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-2">
-                    <label>@Fa.ProjectStatus</label>
-                </div>
-                <div class="col-md-10">
-                    <select class="form-control selection" name="ProjectStatus">
-                        @{ var projectstatus = test_website.Services.DefaultOptions.ProjectStatus();}
-                        @foreach (var a in projectstatus)
-                        {
-                            <option value="@a.Key">@a.Value</option>
-                        }
-                    </select>
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("ProjectStatus"))
-                    {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredProjectStatuse</span></span>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-2">
-                    <label>@Fa.ProjectType</label>
-                </div>
-                <div class="col-md-10">
-                    <select class="form-control selection" name="ProjectType">
-                        @{ var projecttype = test_website.Services.DefaultOptions.ProjectType();}
-                        @foreach (var a in projecttype)
-                        {
-                            <option value="@a.Key">@a.Value</option>
-                        }
-                    </select>
-                    @if (ViewBag.ModelState != null && !(ViewBag.ModelState as ModelStateDictionary).IsValidField("ProjectType"))
-                    {
-                        <span class="text-danger field-validation-error"><span>@Fa.RequiredProjectType</span></span>
-                    }
-                </div>
+                @Html.EditorFor(model => model.Phases, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phases, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Explain, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Explain,new { @class = "form-control"  })
+                @Html.EditorFor(model => model.Explain, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Explain, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label>@Fa.AttachFile</label>
-            <input type="file" name="Attachments" class="form-control-file" accept="application/pdf" multiple="multiple">
-        </div>        
-        
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Fa.CreateProject" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-
-        @if (ViewBag.Failed != null)
-        {
-            <div class="alert alert-warning">
-                <a href="#" class="alert-link"></a>
-                @ViewBag.Failed
-            </div>
-        }
-        @if (ViewBag.Duplicate != null)
-        {
-            <div class="alert alert-warning">
-                <a href="#" class="alert-link"></a>
-                @ViewBag.Duplicate
-            </div>
-        }
-
-
-
     </div>
 }
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/persiandate/bootstrap-datepicker.min.js"></script>
-    <script src="~/Scripts/persiandate/bootstrap-datepicker.fa.min.js"></script>
-
-
-    <script>
-        $(".college-selection").change(function () {
-            $.get("@Url.Action("educationalgroupofcolleges", "EducationalGroup")", { id: $(this).val() }, function (a) {
-                $("#edu").find('div').last().html(a);
-            });
-            $.get("@Url.Action("ExecuterOfCollege", "Executer")", { id: $(this).val() }, function (a) {
-                    $("#exe").find('div').last().html(a);
-            });
-        })
-
-        $(".datepicker").datepicker({
-            changeMonth: true,
-            changeYear: true
-        });
-
-    </script>
 }
-
-@section styles{
-<link rel="stylesheet" href="~/Scripts/persiandate/bootstrap-datepicker.min.css" />    
-    }

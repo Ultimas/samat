@@ -31,7 +31,6 @@ namespace test_website
             app.CreatePerOwinContext(() => new ResearchGroupManager());
             app.CreatePerOwinContext(() => new EmployerManager());
             app.CreatePerOwinContext(() => new ExecuterManager());
-            app.CreatePerOwinContext(() => new ProjectManager());
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());

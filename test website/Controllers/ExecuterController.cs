@@ -135,11 +135,5 @@ namespace test_website.Controllers
         {
             return View(ResearchGroupManager.List());
         }
-
-        public ActionResult ExecuterOfCollege(int id)
-        {
-            var executer = ExecuterManager.FindByCollegeId(id);
-            return PartialView(executer);
-        }
     }
 }

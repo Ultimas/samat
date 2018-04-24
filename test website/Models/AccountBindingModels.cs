@@ -1,9 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using System.Web;
-using System.Globalization;
-using System.Linq;
 
 namespace test_website.Models
 {
@@ -11,13 +8,13 @@ namespace test_website.Models
 
     public class LoginBindingModel
     {
-        [Required(ErrorMessage = Fa.RequiredUserName)]
-        [RegularExpression("[a-zA-Z0-9]+", ErrorMessage = Fa.UserNameChar)]
+        [Required(ErrorMessage =Fa.RequiredUserName)]
+        [RegularExpression("[a-zA-Z0-9]+",ErrorMessage =Fa.UserNameChar)]
         [Display(Name = Fa.UserName)]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = Fa.RequiredPassword)]
-        [MinLength(6, ErrorMessage = Fa.PasswordChar)]
+        [Required(ErrorMessage =Fa.RequiredPassword)]
+        [MinLength(6,ErrorMessage =Fa.PasswordChar)]
         [Display(Name = Fa.Password)]
         public string Password { get; set; }
 
@@ -28,23 +25,23 @@ namespace test_website.Models
 
     public class CreateAdminBindingModel
     {
-        [Required(ErrorMessage = Fa.EnterName)]
-        [Display(Name = Fa.FirstName)]
+        [Required(ErrorMessage =Fa.EnterName)]
+        [Display(Name =Fa.FirstName)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = Fa.EnterLastName)]
-        [Display(Name = Fa.LastName)]
+        [Required(ErrorMessage =Fa.EnterLastName)]
+        [Display(Name =Fa.LastName)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = Fa.EnterNationalCode)]
-        [RegularExpression("[0-9]+", ErrorMessage = Fa.NationalChar)]
-        [StringLength(10, ErrorMessage = Fa.NationalLength, MinimumLength = 10)]
-        [Display(Name = Fa.NationalCode)]
+        [Required(ErrorMessage =Fa.EnterNationalCode)]
+        [RegularExpression("[0-9]+",ErrorMessage =Fa.NationalChar)]
+        [StringLength(10,ErrorMessage = Fa.NationalLength,MinimumLength =10)]
+        [Display(Name =Fa.NationalCode)]
         public string NationalCode { get; set; }
 
         [Required(ErrorMessage = Fa.RequiredUserName)]
         [RegularExpression("[a-zA-Z0-9]+", ErrorMessage = Fa.UserNameChar)]
-        [Display(Name = Fa.UserName)]
+        [Display(Name =Fa.UserName)]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = Fa.RequiredPassword)]
@@ -170,8 +167,8 @@ namespace test_website.Models
     }
     public class CreateCollegeBindingModel
     {
-        [Required(ErrorMessage = Fa.RequiredCollegeName)]
-        [Display(Name = Fa.CollegeName)]
+        [Required(ErrorMessage =Fa.RequiredCollegeName)]
+        [Display(Name =Fa.CollegeName)]
         public string Name { get; set; }
     }
     public class EditCollegeBindingModel
@@ -186,8 +183,8 @@ namespace test_website.Models
 
     public class CreateEducationalGroupBindingModel
     {
-        [Required(ErrorMessage = Fa.RequiredEducationalGroupName)]
-        [Display(Name = Fa.EducationalGroupName)]
+        [Required(ErrorMessage =Fa.RequiredEducationalGroupName)]
+        [Display(Name =Fa.EducationalGroupName)]
         public string Name { get; set; }
 
         [Required]
@@ -207,8 +204,8 @@ namespace test_website.Models
 
     public class CreateResearchGroupBindingModel
     {
-        [Required(ErrorMessage = Fa.RequiredResearchGroupName)]
-        [Display(Name = Fa.ResearchGroupName)]
+        [Required(ErrorMessage =Fa.RequiredResearchGroupName)]
+        [Display(Name =Fa.ResearchGroupName)]
         public string Name { get; set; }
 
         [Required]
@@ -236,8 +233,8 @@ namespace test_website.Models
 
     public class CreateEmployerBindingModel
     {
-        [Required(ErrorMessage = Fa.RequiredEmployerName)]
-        [Display(Name = Fa.EmployerName)]
+        [Required(ErrorMessage =Fa.RequiredEmployerName)]
+        [Display(Name =Fa.EmployerName)]
         public string Name { get; set; }
 
         [Required(ErrorMessage = Fa.EnterNationalCode)]
@@ -251,7 +248,7 @@ namespace test_website.Models
         [Required]
         public SecurityClass? SecurityClass { get; set; }
     }
-
+    
     public class EditEmployerBindingModel
     {
         [Required(ErrorMessage = Fa.RequiredEmployerName)]
@@ -295,16 +292,16 @@ namespace test_website.Models
 
         public int[] ResearchGroupIds { get; set; }
 
-        [Display(Name = Fa.Email)]
-        [Required(ErrorMessage = Fa.RequiredEmail)]
-        [EmailAddress(ErrorMessage = Fa.EmailValidation)]
+        [Display(Name =Fa.Email)]
+        [Required(ErrorMessage =Fa.RequiredEmail)]
+        [EmailAddress(ErrorMessage =Fa.EmailValidation)]
         public string Email { get; set; }
 
-        [Display(Name = Fa.PhoneNumber)]
-        [Phone(ErrorMessage = Fa.RequiredPhoneNumber)]
+        [Display(Name =Fa.PhoneNumber)]
+        [Phone(ErrorMessage =Fa.RequiredPhoneNumber)]
         public string Phone { get; set; }
 
-        [Display(Name = Fa.Explain)]
+        [Display(Name =Fa.Explain)]
         public string Explain { get; set; }
     }
 
@@ -348,212 +345,59 @@ namespace test_website.Models
 
     public class CreateProjectBindingModel
     {
-        [Display(Name = Fa.ProjectId)]
-        [Required(ErrorMessage = Fa.RequiredProjectId)]
+        [Display(Name =Fa.ProjectId)]
+        [Required(ErrorMessage =Fa.RequiredProjectId)]
         public string ProjectId { get; set; }
 
         [Display(Name = Fa.Title)]
         [Required(ErrorMessage = Fa.RequiredTitle)]
         public string Title { get; set; }
 
-        [Required]
-        public int? EmployerId { get; set; }
+        [Display(Name =Fa.Price)]
+        [Required(ErrorMessage =Fa.RequiredPrice)]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
 
-        [Required]
-        public int? CollegeId { get; set; }
-
-        [Required]
-        public int? EducationalGroupId { get; set; }
-
-        [Required]
-        public int? ExecuterId { get; set; }
-
-        [Required]
-        public int? ResearchGroupId { get; set; }
-
-        [Display(Name = Fa.Price)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? Price { get; set; }
-
-        [Display(Name = Fa.OverHeadPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? OverHeadPrice { get; set; }
+        [Display(Name =Fa.OverHeadPrice)]
+        [DataType(DataType.Currency)]
+        public decimal OverHeadPrice { get; set; }
 
         [Display(Name = Fa.ReceivePrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? ReceivePrice { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal ReceivePrice { get; set; }
 
         [Display(Name = Fa.RemainPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? RemainPrice { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal RemainPrice { get; set; }
 
-        [Display(Name = Fa.PaymentPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? PaymentPrice { get; set; }
+        [Display(Name = Fa.RemainPrice)]
+        [DataType(DataType.Currency)]
+        public decimal Paymentprice { get; set; }
 
         [Display(Name = Fa.MainContractId)]
         [Required(ErrorMessage = Fa.RequiredMainContractId)]
         public string MainContractId { get; set; }
 
-        [Display(Name = Fa.MainContractDate)]
-        [Required(ErrorMessage = Fa.RequiredMainContractDate)]
-        public string MainContractDateStr { get; set; }
-
-        public DateTime? MainContractDate
-        {
-            get
-            {
-                return Utility.StringToDate(MainContractDateStr);
-            }
-        }
+        [Display(Name =Fa.MainContractDate)]
+        [Required(ErrorMessage =Fa.RequiredMainContractDate)]
+        [DataType(DataType.Date)]
+        public DateTime MainContractDate { get; set; }
 
         [Display(Name = Fa.InternalContractId)]
         [Required(ErrorMessage = Fa.RequiredInternalContractId)]
         public string InternalContractId { get; set; }
+        //
+        [DataType(DataType.Date)]
+        public DateTime InternalContractDate { get; set; }
 
-        [Display(Name = Fa.InternalContractDate)]
-        [Required(ErrorMessage = Fa.RequiredInternalContractDate)]
-        public string InternalContractDateStr { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime EndTime { get; set; }
 
-        public DateTime? InternalContractDate
-        {
-            get
-            {
-                return Utility.StringToDate(InternalContractDateStr);
-            }
-        }
+        public int Phases { get; set; }
 
-        [Display(Name = Fa.ProjectEndTime)]
-        public string ProjectEndDateStr { get; set; }
-
-        public DateTime? ProjectEndDate
-        {
-            get
-            {
-                return Utility.StringToDate(ProjectEndDateStr);
-            }
-        }
-
-        [Display(Name = Fa.PhaseNum)]
-        public int? PhasesNum { get; set; }
-
-        [Required]
-        public int? ProjectStatus { get; set; }
-
-        [Required]
-        public int? ProjectType { get; set; }
-
-        [Display(Name = Fa.Explain)]
         public string Explain { get; set; }
 
-        public HttpPostedFileBase[] Attachments { get; set; }
-
     }
-
-    public class EditProjectBindingModel
-    {
-        [Display(Name = Fa.ProjectId)]
-        [Required(ErrorMessage = Fa.RequiredProjectId)]
-        public string ProjectId { get; set; }
-
-        [Display(Name = Fa.Title)]
-        [Required(ErrorMessage = Fa.RequiredTitle)]
-        public string Title { get; set; }
-
-        [Required]
-        public int? EmployerId { get; set; }
-
-        [Required]
-        public int? CollegeId { get; set; }
-
-        [Required]
-        public int? EducationalGroupId { get; set; }
-
-        [Required]
-        public int? ExecuterId { get; set; }
-
-        [Required]
-        public int? ResearchGroupId { get; set; }
-
-        [Display(Name = Fa.Price)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? Price { get; set; }
-
-        [Display(Name = Fa.OverHeadPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? OverHeadPrice { get; set; }
-
-        [Display(Name = Fa.ReceivePrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? ReceivePrice { get; set; }
-
-        [Display(Name = Fa.RemainPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? RemainPrice { get; set; }
-
-        [Display(Name = Fa.PaymentPrice)]
-        [DataType(DataType.Currency, ErrorMessage = Fa.PriceChar)]
-        public long? PaymentPrice { get; set; }
-
-        [Display(Name = Fa.MainContractId)]
-        [Required(ErrorMessage = Fa.RequiredMainContractId)]
-        public string MainContractId { get; set; }
-
-        [Display(Name = Fa.MainContractDate)]
-        [Required(ErrorMessage = Fa.RequiredMainContractDate)]
-        public string MainContractDateStr { get; set; }
-
-        public DateTime? MainContractDate
-        {
-            get
-            {
-                return Utility.StringToDate(MainContractDateStr);
-            }
-        }
-
-        [Display(Name = Fa.InternalContractId)]
-        [Required(ErrorMessage = Fa.RequiredInternalContractId)]
-        public string InternalContractId { get; set; }
-
-        [Display(Name = Fa.InternalContractDate)]
-        [Required(ErrorMessage = Fa.RequiredInternalContractDate)]
-        public string InternalContractDateStr { get; set; }
-
-        public DateTime? InternalContractDate
-        {
-            get
-            {
-                return Utility.StringToDate(InternalContractDateStr);
-            }
-        }
-
-        [Display(Name = Fa.ProjectEndTime)]
-        public string ProjectEndDateStr { get; set; }
-
-        public DateTime? ProjectEndDate
-        {
-            get
-            {
-                return Utility.StringToDate(ProjectEndDateStr);
-            }
-        }
-
-        [Display(Name = Fa.PhaseNum)]
-        public int? PhasesNum { get; set; }
-
-        [Required]
-        public int? ProjectStatus { get; set; }
-
-        [Required]
-        public int? ProjectType { get; set; }
-
-        [Display(Name = Fa.Explain)]
-        public string Explain { get; set; }
-
-        public HttpPostedFileBase[] Attachments { get; set; }
-
-    }
-
 
     public class AddExternalLoginBindingModel
     {
